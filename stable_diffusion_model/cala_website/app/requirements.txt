@@ -2,7 +2,6 @@ streamlit
 numpy
 pandas
 requests
-random
 openai
 io
 PIL
