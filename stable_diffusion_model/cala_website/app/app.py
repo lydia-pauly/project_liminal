@@ -123,7 +123,7 @@ if use_deployment == False :
     name_dictionary = variable_dictionary['name_dictionary']
     css_path = "style-sheet.css"
 
-else :
+if use_deployment == True :
     css_path = "stable_diffusion_model/cala_website/app/style-sheet.css"
     spinner_text = st.secrets['spinner_text']
     icy_name_list = st.secrets['fixed_names']['icy_name_list']
@@ -205,7 +205,8 @@ with open(css_path) as css :
                 spinner_picker = rand.randint(0,len(spinner_text)-1)
                 with st.spinner(text=spinner_text[spinner_picker]) :
                     if use_our_api == False :
-                        im_list.append(variable_dictionary['im_list_fixed'][x])
+                        if use_deployment == False : im_list.append(variable_dictionary['im_list_fixed'][x])
+                        else : im_list.append(im_list_fixed[x])
                         time.sleep(3)
                     else :
                         res = requests.get(url=model_api, params=params)
@@ -322,7 +323,8 @@ with open(css_path) as css :
 
             if (generate_highres == True) and (generate_surprise == False):
                 if use_our_api == False :
-                    im = variable_dictionary['im_list_fixed'][0]
+                    if use_deployment == False : im = variable_dictionary['im_list_fixed'][0]
+                    else : im = im_list_fixed[0]
                 else :
                     params['resolution'] = 512
                     res = requests.get(url=model_api, params=params)
