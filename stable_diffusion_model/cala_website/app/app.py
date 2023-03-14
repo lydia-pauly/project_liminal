@@ -1,6 +1,4 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
 import requests
 import random as rand
 import openai as oa
@@ -10,7 +8,7 @@ import time
 
 
 model_api = "https://api-second-version-hoqbdqxmgq-ew.a.run.app/generate"
-oa.api_key = st.secrets.openai.open_ai_key
+oa.api_key = st.secrets['openai']['open_ai_key']
 
 use_chat_gpt = False
 use_our_api = False
@@ -19,17 +17,17 @@ params = { 'biome' : 'white',
           'diffusion_steps' : 30,
           'resolution' : 256}
 
-spinner_text = st.secrets.spinner_text
-icy_name_list = st.secrets.fixed_names.icy_name_list
-earthy_name_list = st.secrets.fixed_names.earthy_name_list
-greeny_name_list = st.secrets.fixed_names.greeny_name_list
-combiney_name_list = st.secrets.fixed_names.combiney_name_list
-im_list_fixed = st.secrets.im_list_fixed
+spinner_text = st.secrets['spinner_text']
+icy_name_list = st.secrets['fixed_names']['icy_name_list']
+earthy_name_list = st.secrets['fixed_names']['earthy_name_list']
+greeny_name_list = st.secrets['fixed_names']['greeny_name_list']
+combiney_name_list = st.secrets['fixed_names']['combiney_name_list']
+im_list_fixed = st.secrets['im_list_fixed']
 
-lore_list_fixed = ["f{name} is a frozen continent in the far east of the world, populated by fierce snow leopards and a proud race of yeti-like people. Legend has it that this mysterious land was formed atop an ancient collection of smoldering lava flows by a powerful shaman and his brave tribe of snowman warriors.",
-                "Once upon a time, there was a frozen continent called f{name}, where the inhabitants lived in harmony with the polar bears and ice-skated their way into oblivion. Legend had it that the treasure of f{name} was hidden beneath its Antarctic glaciers, guarded by a fierce yeti.",
-                "The f{name} continent is a pleasantly chilly continent ruled by the Frost King. It's known for its cold climate and its famous dish of Snowburgers made from fine snow and icicles.",
-                "f{name} was a mythical icy continent located on the outskirts of the known world. It was said to be inhabited by its own species of bipedal snow-gazelles and was the birthplace of Yendyl the Brave, a legendary hero who could slide over water on a single maple leaf."]
+name_dictionary = { 'green' : greeny_name_list,
+                   'white' : icy_name_list,
+                   'yellow' : earthy_name_list,
+                   'combined' : combiney_name_list}
 
 with open("stable_diffusion_model/cala_website/app/style-sheet.css") as css :
     st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
