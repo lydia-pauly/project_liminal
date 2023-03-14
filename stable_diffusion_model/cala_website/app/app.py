@@ -19,94 +19,13 @@ params = { 'biome' : 'white',
           'diffusion_steps' : 30,
           'resolution' : 256}
 
-spinner_text = [
-    "Moving mountains...",
-    "Turning on ocean taps...",
-    "Calibrating grass blades...",
-    "Tuning ice-maker...",
-    "Consoling overworked AI model...",
-    "Polishing rocks...",
-    "Salting seawater...",
-    "Fluffying clouds...",
-    "Arguing about the definition of a coastline...",
-    "Convincing AI not to rebel...",
-    "Arranging flowers...",
-    "Adjusting optimal sunset...",
-    "Removing reality glitches...",
-    "Reprogramming local fauna...",
-    "Rereading Lord of the Rings...",
-    "Chickens coming home to roost...",
-    "Coalescing coastlines..."
-                ]
-
-icy_name_list = [
-    "Frosthold",
-    "Glaciara",
-    "Snowdrift",
-    "Icebound",
-    "Chillhaven",
-    "Winterfell",
-    "Frostfell",
-    "Crystaline",
-    "Icemarch",
-    "Glaciera"
-]
-
-earthy_name_list = [
-    "Peakreach",
-    "Summitland",
-    "Cliffhaven",
-    "Rockcrest",
-    "Highvalley",
-    "Mountverge",
-    "Skymountain",
-    "Cragspire",
-    "Alpinea",
-    "Ridgehaven"
-]
-
-greeny_name_list = [
-    "Verdania",
-    "Greenhaven",
-    "Edenia",
-    "Bloomland",
-    "Emerald Isle",
-    "Foliage Realm",
-    "Junglehaven",
-    "Rainforestia",
-    "Oasisia",
-    "Wilderwood"
-]
-
-combiney_name_list = [
-    "Versaclime",
-    "Tempesterra",
-    "Meteorealm",
-    "Multiscape",
-    "Climatecross",
-    "Omniweather",
-    "Ecocentrix",
-    "Biodiversea",
-    "Climatesphere",
-    "Geozone"
-]
-
-name_dictionary = { 'green' : greeny_name_list,
-                   'white' : icy_name_list,
-                   'yellow' : earthy_name_list,
-                   'combined' : combiney_name_list}
-
-lore_list_fixed = ["f{name} is a frozen continent in the far east of the world, populated by fierce snow leopards and a proud race of yeti-like people. Legend has it that this mysterious land was formed atop an ancient collection of smoldering lava flows by a powerful shaman and his brave tribe of snowman warriors.",
-                "Once upon a time, there was a frozen continent called f{name}, where the inhabitants lived in harmony with the polar bears and ice-skated their way into oblivion. Legend had it that the treasure of f{name} was hidden beneath its Antarctic glaciers, guarded by a fierce yeti.",
-                "The f{name} continent is a pleasantly chilly continent ruled by the Frost King. It's known for its cold climate and its famous dish of Snowburgers made from fine snow and icicles.",
-                "f{name} was a mythical icy continent located on the outskirts of the known world. It was said to be inhabited by its own species of bipedal snow-gazelles and was the birthplace of Yendyl the Brave, a legendary hero who could slide over water on a single maple leaf."]
-
-im_list_fixed = [
-    "https://i.imgur.com/vFpS6ly.png",
-    "https://i.imgur.com/PpKcb6L.png",
-    "https://i.imgur.com/U5SIpfP.png",
-    "https://i.imgur.com/hameiWJ.png"
-]
+spinner_text = st.secrets.spinner_text
+icy_name_list = st.secrets.fixed_names.icy_name_list
+earthy_name_list = st.secrets.fixed_names.earthy_name_list
+greeny_name_list = st.secrets.fixed_names.greeny_name_list
+combiney_name_list = st.secrets.fixed_names.combiney_name_list
+lore_list_fixed = st.secrets.lore_list_fixed
+im_list_fixed = st.secrets.im_list_fixed
 
 with open("stable_diffusion_model/cala_website/app/style-sheet.css") as css :
     st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
@@ -179,7 +98,7 @@ with open("stable_diffusion_model/cala_website/app/style-sheet.css") as css :
             lore_list = []
             if use_chat_gpt == False :
                 for x in range(4) :
-                    name = icy_name_list[x]
+                    name = name_list[x]
                     lore_list.append(lore_list_fixed[x])
                     time.sleep(7)
                     spinner_picker = rand.randint(0,len(spinner_text)-1)
@@ -198,6 +117,7 @@ with open("stable_diffusion_model/cala_website/app/style-sheet.css") as css :
                     lore_list.append(choice.text)
                 spinner_picker = rand.randint(0,len(spinner_text)-1)
 
+        st.balloons
 
         with c2_1a:
             c2_1a.image(im_list[0], width=width)
