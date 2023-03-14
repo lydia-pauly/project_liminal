@@ -6,15 +6,14 @@ import random as rand
 import openai as oa
 import io
 from PIL import Image
+import time
 
-oa.api_key = ""
+
 model_api = "https://api-second-version-hoqbdqxmgq-ew.a.run.app/generate"
-key = st.secrets.openai.open_ai_key
-
-st.write(key)
-
+oa.api_key = st.secrets.openai.open_ai_key
 
 use_chat_gpt = False
+use_our_api = False
 
 params = { 'biome' : 'white',
           'diffusion_steps' : 30,
@@ -102,6 +101,13 @@ lore_list_fixed = ["f{name} is a frozen continent in the far east of the world, 
                 "The f{name} continent is a pleasantly chilly continent ruled by the Frost King. It's known for its cold climate and its famous dish of Snowburgers made from fine snow and icicles.",
                 "f{name} was a mythical icy continent located on the outskirts of the known world. It was said to be inhabited by its own species of bipedal snow-gazelles and was the birthplace of Yendyl the Brave, a legendary hero who could slide over water on a single maple leaf."]
 
+im_list_fixed = [
+    "https://i.imgur.com/vFpS6ly.png",
+    "https://i.imgur.com/PpKcb6L.png",
+    "https://i.imgur.com/U5SIpfP.png",
+    "https://i.imgur.com/hameiWJ.png"
+]
+
 with open("stable_diffusion_model/cala_website/app/style-sheet.css") as css :
     st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
 
@@ -114,7 +120,6 @@ with open("stable_diffusion_model/cala_website/app/style-sheet.css") as css :
             c1_a.markdown('# Welcome to **CALA**')
             c1_a.markdown('(Coastal Automated Learning Algorithm)')
             c1_a.markdown('Choose an option below for some fictional coastlines')
-            #c1.a.markdown(key)
 
         with c1_b :
             c1_b_col1, c1_b_col2, c1_b_col3, c1_b_col4 = c1_b.columns(4)
@@ -164,16 +169,20 @@ with open("stable_diffusion_model/cala_website/app/style-sheet.css") as css :
         for x in range(4) :
             spinner_picker = rand.randint(0,len(spinner_text)-1)
             with st.spinner(text=spinner_text[spinner_picker]) :
-                res = requests.get(url=model_api, params=params)
-                im_list.append(Image.open(io.BytesIO(res.content)))
-                spinner_picker = rand.randint(0,len(spinner_text)-1)
-
+                if use_our_api == False :
+                    im_list.append(im_list_fixed[x])
+                    time.sleep(7)
+                else :
+                    res = requests.get(url=model_api, params=params)
+                    im_list.append(Image.open(io.BytesIO(res.content)))
         with st.spinner(text=spinner_text[spinner_picker]) :
             lore_list = []
             if use_chat_gpt == False :
                 for x in range(4) :
                     name = icy_name_list[x]
                     lore_list.append(lore_list_fixed[x])
+                    time.sleep(7)
+                    spinner_picker = rand.randint(0,len(spinner_text)-1)
             else :
                 prompt_list = []
                 for x in range(4) :
@@ -187,7 +196,8 @@ with open("stable_diffusion_model/cala_website/app/style-sheet.css") as css :
                     )
                 for choice in ai_response.choices:
                     lore_list.append(choice.text)
-            spinner_picker = rand.randint(0,len(spinner_text)-1)
+                spinner_picker = rand.randint(0,len(spinner_text)-1)
+
 
         with c2_1a:
             c2_1a.image(im_list[0], width=width)
