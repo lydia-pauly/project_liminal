@@ -149,7 +149,7 @@ with open(css_path) as css :
     with c1 :
         with c1_a :
             c1_a.markdown('# Welcome to **COASTr**')
-            c1_a.markdown('##### (Coastal Object-based Advection and Stochastic Transformation with Rotation)')
+            c1_a.markdown('##### (Coastal Object-based Algorithm and Stochastic Transformation with Rotation)')
             c1_a.markdown('COASTr is a diffusion model trained on SENTINEL-2 satellite images, and can produce completely new, fictional coastlines - never seen before by human eyes. 🏖️💭')
             #c1_a.markdown('COASTr was built in just two weeks by the Project Liminal team at Le Wagon for their final project.')
         with c1_b :
