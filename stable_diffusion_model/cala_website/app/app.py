@@ -7,27 +7,26 @@ from PIL import Image
 import time
 
 model_api = "https://api-second-version-hoqbdqxmgq-ew.a.run.app/generate"
-#oa.api_key = st.secrets['openai']['open_ai_key']
 
 def grab_text_lists(chat_api=False, own_api=False) :
     spinner_text = [
-    "Moving mountains...",
-    "Turning on ocean taps...",
-    "Calibrating grass blades...",
-    "Tuning ice-maker...",
-    "Consoling overworked AI model...",
-    "Polishing rocks...",
-    "Salting seawater...",
-    "Fluffying clouds...",
-    "Arguing about the definition of a coastline...",
-    "Convincing AI not to rebel...",
-    "Arranging flowers...",
-    "Adjusting optimal sunset...",
-    "Removing reality glitches...",
-    "Reprogramming local fauna...",
-    "Rereading Lord of the Rings...",
-    "Chickens coming home to roost...",
-    "Coalescing coastlines..."
+    "🏔️ Moving mountains...",
+    "💧 Turning on ocean taps...",
+    "🌾 Calibrating grass blades...",
+    "🧊 Tuning ice-maker...",
+    "😭 Consoling overworked AI model...",
+    "🪨 Polishing rocks...",
+    "🧂 Salting seawater...",
+    "⛅ Fluffying clouds...",
+    "💢 Arguing about the definition of a coastline...",
+    "🙏 Convincing AI not to rebel...",
+    "🌻 Arranging flowers...",
+    "🌅 Adjusting optimal sunset...",
+    "📎Removing reality glitches...",
+    "🦌 Reprogramming local fauna...",
+    "🧙 Rereading Lord of the Rings...",
+    "🐔 Chickens coming home to roost...",
+    "🌊 Coalescing coastlines..."
                 ]
 
     icy_name_list = [
@@ -110,9 +109,9 @@ def integrate_name_lore_list(name) :
                 f"{name} was a mythical icy continent located on the outskirts of the known world. It was said to be inhabited by its own species of bipedal snow-gazelles and was the birthplace of Yendyl the Brave, a legendary hero who could slide over water on a single maple leaf."]
     return lore_list_fixed
 
-use_chat_gpt = True
-use_our_api = True
-use_deployment = True
+use_chat_gpt = False
+use_our_api = False
+use_deployment = False
 
 params = { 'biome' : 'white',
           'diffusion_steps' : 30,
@@ -133,6 +132,7 @@ else :
     combiney_name_list = st.secrets['fixed_names']['combiney_name_list']
     im_list_fixed = st.secrets['fixed_lists']['im_list_fixed']
     lore_list_fixed = st.secrets['fixed_lists']['lore_list_fixed']
+    oa.api_key = st.secrets['openai']['open_ai_key']
 
     name_dictionary = { 'green' : greeny_name_list,
                     'white' : icy_name_list,
@@ -194,113 +194,157 @@ with open(css_path) as css :
 
         width=300
 
-    if (generate_white == True) or (generate_yellow == True) or (generate_green == True) or (generate_combined == True):
-        im_list = []
-        name_choice_list = []
-        while len(name_choice_list) < 5 :
-            index = rand.randint(0,len(name_list)-1)
-            if name_list[index] not in name_choice_list: name_choice_list.append(name_list[index])
+        if (generate_white == True) or (generate_yellow == True) or (generate_green == True) or (generate_combined == True):
+            im_list = []
+            name_choice_list = []
+            while len(name_choice_list) < 5 :
+                index = rand.randint(0,len(name_list)-1)
+                if name_list[index] not in name_choice_list: name_choice_list.append(name_list[index])
 
-        for x in range(4) :
-            spinner_picker = rand.randint(0,len(spinner_text)-1)
-            with st.spinner(text=spinner_text[spinner_picker]) :
-                if use_our_api == False :
-                    im_list.append(variable_dictionary['im_list_fixed'][x])
-                    time.sleep(3)
-                else :
-                    res = requests.get(url=model_api, params=params)
-                    im_list.append(Image.open(io.BytesIO(res.content)))
-        with st.spinner(text=spinner_text[spinner_picker]) :
-            lore_list = []
-            if use_chat_gpt == False :
-                for x in range(4) :
-                    lore_list_fixed = integrate_name_lore_list(name_choice_list[x])
-                    lore_list.append(lore_list_fixed[x])
-                    time.sleep(3)
-                    spinner_picker = rand.randint(0,len(spinner_text)-1)
-            else :
-                prompt_list = []
-                for x in range(4) :
-                    prompt = f"Using the fictional name {name_choice_list[x]} write two sentences describing some fictional history about this {biome} continent. Please be funny and creative. Please use markdown to make the name {name_choice_list[x]} bold."
-                    prompt_list.append(prompt)
-
-                ai_response = oa.Completion.create(
-                    engine="text-davinci-003",
-                    prompt=prompt_list,
-                    max_tokens= 256
-                    )
-                for choice in ai_response.choices:
-                    lore_list.append(choice.text)
+            for x in range(4) :
                 spinner_picker = rand.randint(0,len(spinner_text)-1)
+                with st.spinner(text=spinner_text[spinner_picker]) :
+                    if use_our_api == False :
+                        im_list.append(variable_dictionary['im_list_fixed'][x])
+                        time.sleep(3)
+                    else :
+                        res = requests.get(url=model_api, params=params)
+                        im_list.append(Image.open(io.BytesIO(res.content)))
+            with st.spinner(text=spinner_text[spinner_picker]) :
+                lore_list = []
+                if use_chat_gpt == False :
+                    for x in range(4) :
+                        lore_list_fixed = integrate_name_lore_list(name_choice_list[x])
+                        lore_list.append(lore_list_fixed[x])
+                        time.sleep(3)
+                        spinner_picker = rand.randint(0,len(spinner_text)-1)
+                else :
+                    prompt_list = []
+                    for x in range(4) :
+                        prompt = f"Using the fictional name {name_choice_list[x]} write two sentences describing some fictional history about this {biome} continent. Please be funny and creative. Please use markdown to make the name {name_choice_list[x]} bold."
+                        prompt_list.append(prompt)
 
-        st.balloons()
+                    ai_response = oa.Completion.create(
+                        engine="text-davinci-003",
+                        prompt=prompt_list,
+                        max_tokens= 256
+                        )
+                    for choice in ai_response.choices:
+                        lore_list.append(choice.text)
+                    spinner_picker = rand.randint(0,len(spinner_text)-1)
 
-        with c2_1a:
-            c2_1a.image(im_list[0], width=width)
+            st.balloons()
 
-        with c2_2a:
-            c2_2a.header(name_choice_list[0])
-            c2_2a.markdown(lore_list[0])
+            with c2_1a:
+                c2_1a.image(im_list[0], width=width)
 
-        with c2_1b:
-            c2_1b.image(im_list[1], width=width)
+            with c2_2a:
+                c2_2a.header(name_choice_list[0])
+                c2_2a.markdown(lore_list[0])
 
-        with c2_2b:
-            c2_2b.header(name_choice_list[1])
-            c2_2b.markdown(lore_list[1])
+            with c2_1b:
+                c2_1b.image(im_list[1], width=width)
 
-        with c2_1c:
-            c2_1c.image(im_list[2], width=width)
+            with c2_2b:
+                c2_2b.header(name_choice_list[1])
+                c2_2b.markdown(lore_list[1])
 
-        with c2_2c:
-            c2_2c.header(name_choice_list[2])
-            c2_2c.markdown(lore_list[2])
+            with c2_1c:
+                c2_1c.image(im_list[2], width=width)
 
-        with c2_1d:
-            c2_1d.image(im_list[3], width=width)
+            with c2_2c:
+                c2_2c.header(name_choice_list[2])
+                c2_2c.markdown(lore_list[2])
 
-        with c2_2d:
-            c2_2d.header(name_choice_list[3])
-            c2_2d.markdown(lore_list[3])
+            with c2_1d:
+                c2_1d.image(im_list[3], width=width)
 
-        c2.markdown('')
-        c2.markdown("### **You right now**: 'Wow! 🤯 What amazing coastlines! I really want to know how that works!'")
-        c2.markdown('We got you. Below are a few FAQs on our model and the story behind it.')
+            with c2_2d:
+                c2_2d.header(name_choice_list[3])
+                c2_2d.markdown(lore_list[3])
+
+            c2.markdown('')
+            c2.markdown("### **You right now**: 'Wow! 🤯 What amazing coastlines! I really want to know how that works!'")
+            c2.markdown('We got you. Below are a few FAQs on our model and the story behind it.')
 
     if (generate_white == False) and (generate_yellow == False) and (generate_green == False) and (generate_combined == False):
-        c3 = st.container()
-        with c3 :
-            c3.markdown("### **You right now**: 'I don't want to see amazing, completely new images of coastlines! I just want to know what the hell is going on!'")
-            c3.markdown("Fine (but you're missing out). Here are a few FAQs on our model and the story behind it.")
-    c4 = st.container()
-    with c4 :
-        c4.markdown('')
-        c4.markdown('')
-        c4.markdown("#### 🤔 Q1: So, what is a diffusion model exactly?")
-        c4.markdown("A diffusion model is a type of deep learning model that works with image data. \
+        c5 = st.container()
+        with c5 :
+            st.markdown("### **You right now**: 'I don't want to see amazing, completely new images of coastlines! I just want to know what the hell is going on!'")
+            st.markdown("Fine (but you're missing out). Here are a few FAQs on our model and the story behind it.")
+    c6 = st.container()
+    with c6 :
+        st.markdown('')
+        st.markdown('')
+        st.markdown("#### 🤔 Q1: So, what is a diffusion model exactly?")
+        st.markdown("A diffusion model is a type of deep learning model that works with image data. \
             They're typically **generative** - they generate images very similar to the image data that \
                 they've been trained on.")
-        c4.markdown("A diffusion model essentially gets an image dataset, and watches as noise is slowly \
+        st.markdown("A diffusion model essentially gets an image dataset, and watches as noise is slowly \
             applied to each image, until it is no longer recognisable.")
-        c4.markdown("We generate new images by slightly tricking the diffusion model: \
+        st.markdown("We generate new images by slightly tricking the diffusion model: \
             we give it an image of **pure noise**, and ask the model to predict \
             what the original image was.")
-        c4.markdown("Here's a video of our model moving from pure noise to a predicted coastline:")
-        c4.video('https://i.imgur.com/kUO8OrF.mp4')
-        c4.markdown('')
-        c4.markdown('')
-        c4.markdown('#### 📸 Q2: How many images is COASTr trained on, and where did they come from?')
-        c4.markdown("COASTr's original dataset was 4000 images, then cleaned down to 1302 once we \
+        st.markdown("Here's a video of our model moving from pure noise to a predicted coastline:")
+        st.video('https://i.imgur.com/kUO8OrF.mp4')
+        st.markdown('')
+        st.markdown('')
+        st.markdown('#### 📸 Q2: How many images is COASTr trained on, and where did they come from?')
+        st.markdown("COASTr's original dataset was 4000 images, then cleaned down to 1302 once we \
             removed all the non-coastal areas. These images were then broken into classifications by \
             continent, and then by biome. We also experimented with boosted image sets by rotating each \
             image by 90 degrees to produce 3 'new' images, which gave us a dataset of around 3k images.")
-        c4.markdown("The original images come from the SENTINEL-2 satellite, and were sourced by Frederik \
+        st.markdown("The original images come from the SENTINEL-2 satellite, and were sourced by Frederik \
                     Ueberschar for his final thesis project, LANDSHAPES. You can read more about his work here \
                         and find his dataset on Kaggle here, including his enhanced 51k image dataset which \
                             he very kindly provided to us for this project. Thanks Frederik!")
-        c4.markdown('')
-        c4.markdown('')
-        c4.markdown("#### 👀 Q3: And who is this super genius team that made COASTr?")
-        c4.markdown("We are Project Liminal at Le Wagon! We made COASTr in 2 weeks for our final project. \
+        st.markdown('')
+        st.markdown('')
+        st.markdown("#### 👀 Q3: And who is this super genius team that made COASTr?")
+        st.markdown("We are Project Liminal at Le Wagon! We made COASTr in 2 weeks for our final project. \
             Here's a child's drawing of us together in our final week.")
-        c4.image('https://i.imgur.com/1CkuNLJ.png')
+        st.image('https://i.imgur.com/1CkuNLJ.png')
+
+    c3 = st.container()
+    with c3 :
+        c3.markdown("### 🚨 Secret coastlines! Now available! Press below! 🚨")
+        c3_col1, c3_col2, = c3.columns(2)
+        c3.markdown(' ')
+        with c3_col1 :
+            generate_highres = c3_col1.button(label="⏫ Give me a high-def coastline!")
+        with c3_col2 :
+            generate_surprise = c3_col2.button(label="🎁 Surprise me!")
+
+        c4 = st.container()
+
+        with c4 :
+            c4_1, c4_2 = st.columns(2)
+
+            if (generate_highres == True) and (generate_surprise == False):
+                if use_our_api == False :
+                    im = variable_dictionary['im_list_fixed'][0]
+                else :
+                    params['resolution'] = 512
+                    res = requests.get(url=model_api, params=params)
+                    im = Image.open(io.BytesIO(res.content))
+                with c4_1 :
+                    c4_1.image(im)
+                with c4_2 :
+                    c4_2.header('256px -> 512px')
+                    c4_2.markdown("This is our model's attempt at higher resolution coastlines. 512px \
+                        ended up being our limit when it came to diffusion generation, with higher resolutions \
+                            needing significantly more complex architecture and much longer training times.")
+                    c4_2.markdown("As a point of reference, our **starting** images (the input) were 1024px by \
+                                    1024px.")
+
+            if (generate_highres == False) and (generate_surprise == True) :
+                surprise_im_list = [
+                    'https://i.imgur.com/ig5gBfK.jpg',
+                    'https://i.imgur.com/POOnf3r.jpg'
+                ]
+                surprise_choice = rand.randint(0,1)
+                with c4_1:
+                    c4_1.image(surprise_im_list[surprise_choice])
+                with c4_2:
+                    c4_2.header('✨ Surprise! ✨')
+                    c4_2.markdown('This is what happens if you adjust the learning rate of our model from e-3 to e-2 - only a factor of 10 is the difference between realism and abstract art!')
