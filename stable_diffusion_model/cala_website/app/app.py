@@ -6,15 +6,15 @@ import random as rand
 import openai as oa
 import io
 from PIL import Image
-import asyncio
-import aiohttp
-import time
 
 oa.api_key = ""
 model_api = "https://api-second-version-hoqbdqxmgq-ew.a.run.app/generate"
 #key = st.secrets.some_magic_api.key
+def
 
-use_chat_gpt = True
+
+
+use_chat_gpt = False
 
 params = { 'biome' : 'white',
           'diffusion_steps' : 30,
