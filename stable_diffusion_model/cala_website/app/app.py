@@ -22,7 +22,8 @@ icy_name_list = st.secrets['fixed_names']['icy_name_list']
 earthy_name_list = st.secrets['fixed_names']['earthy_name_list']
 greeny_name_list = st.secrets['fixed_names']['greeny_name_list']
 combiney_name_list = st.secrets['fixed_names']['combiney_name_list']
-im_list_fixed = st.secrets['im_list_fixed']
+im_list_fixed = st.secrets['fixed_lists']['im_list_fixed']
+lore_list_fixed = st.secrets['fixed_lists']['lore_list_fixed']
 
 name_dictionary = { 'green' : greeny_name_list,
                    'white' : icy_name_list,
