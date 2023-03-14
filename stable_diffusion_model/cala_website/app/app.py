@@ -10,7 +10,6 @@ from PIL import Image
 oa.api_key = ""
 model_api = "https://api-second-version-hoqbdqxmgq-ew.a.run.app/generate"
 #key = st.secrets.some_magic_api.key
-def
 
 
 
