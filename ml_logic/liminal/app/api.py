@@ -26,7 +26,7 @@ app.add_middleware(
 )
 
 # http://localhost:8000/generate?diffusion_steps=10&resolution=256&biome=white
-# https://liminalv1-hoqbdqxmgq-ew.a.run.app/generate?diffusion_steps=10&resolution=256&biome=white
+# https://api-second-version-hoqbdqxmgq-ew.a.run.app/generate?diffusion_steps=10&resolution=256&biome=green
 @app.get("/generate")
 def generate(diffusion_steps=30,
              biome='white',
@@ -75,5 +75,5 @@ def generate(diffusion_steps=30,
 @app.get("/")
 def root():
     return {
-    'greeting': 'Hello'
+    'endpoint': '/generate'
     }
