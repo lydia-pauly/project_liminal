@@ -101,7 +101,7 @@ lore_list_fixed = ["f{name} is a frozen continent in the far east of the world, 
                 "The f{name} continent is a pleasantly chilly continent ruled by the Frost King. It's known for its cold climate and its famous dish of Snowburgers made from fine snow and icicles.",
                 "f{name} was a mythical icy continent located on the outskirts of the known world. It was said to be inhabited by its own species of bipedal snow-gazelles and was the birthplace of Yendyl the Brave, a legendary hero who could slide over water on a single maple leaf."]
 
-with open("./style-sheet.css") as css :
+with open("stable_diffusion_model/cala_website/app/style-sheet.css") as css :
     st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
 
     c1 = st.container()
