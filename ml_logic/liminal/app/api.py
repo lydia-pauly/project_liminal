@@ -11,9 +11,13 @@ from liminal.model.registry import load_model
 app = FastAPI()
 
 app.state.model_white = load_model(biome='white', resolution=256)
+print('------------------------------------------------------------------------')
 app.state.model_yellow = load_model(biome='yellow', resolution=256)
+print('------------------------------------------------------------------------')
 app.state.model_green = load_model(biome='green', resolution=256)
+print('------------------------------------------------------------------------')
 app.state.model_mix = load_model(biome='mix', resolution=256)
+print('------------------------------------------------------------------------')
 app.state.model_512 = load_model(biome='mix', resolution=512)
 
 # Optional, good practice for dev purposes. Allow all middlewares
@@ -42,6 +46,11 @@ def generate(diffusion_steps=15,
     model_mix = app.state.model_mix
     model_512 = app.state.model_512
 
+    print('------------------------------------------------------------------------')
+    print(f'Params: {diffusion_steps} diffusion steps, {biome} biome, {resolution}x{resolution} resolution')
+
+    print('Generating images...')
+
     # Generate images depending on chosen parameters
     if int(resolution) == 256:
         if biome == 'white':
@@ -55,7 +64,6 @@ def generate(diffusion_steps=15,
     elif int(resolution) == 512:
         imgs_gen = model_512.generate(1, int(diffusion_steps), image_size=int(resolution))
 
-    print(f'Params:\n {diffusion_steps} diffusion steps, {biome} biome, {resolution}x{resolution} resolution')
     print(f'✅ Image from {biome} biome, resolution {resolution} generated')
 
     # Convert tensor to np.array and then PIL.Image
