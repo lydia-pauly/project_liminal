@@ -9,12 +9,12 @@ from PIL import Image
 from liminal.model.registry import load_model
 
 app = FastAPI()
+
 app.state.model_white = load_model(biome='white', resolution=256)
 app.state.model_yellow = load_model(biome='yellow', resolution=256)
 app.state.model_green = load_model(biome='green', resolution=256)
 app.state.model_mix = load_model(biome='mix', resolution=256)
 app.state.model_512 = load_model(biome='mix', resolution=512)
-
 
 # Optional, good practice for dev purposes. Allow all middlewares
 app.add_middleware(
@@ -25,10 +25,11 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
+
 # http://localhost:8000/generate?diffusion_steps=10&resolution=256&biome=white
 # https://api-second-version-hoqbdqxmgq-ew.a.run.app/generate?diffusion_steps=10&resolution=256&biome=green
 @app.get("/generate")
-def generate(diffusion_steps=30,
+def generate(diffusion_steps=15,
              biome='white',
              resolution=256,
              response_class=Response):
@@ -75,5 +76,28 @@ def generate(diffusion_steps=30,
 @app.get("/")
 def root():
     return {
-    'endpoint': '/generate'
+    'endpoint to generate images': '/generate',
+    'endpoint for documentation':'/documentation'
+    }
+
+
+@app.get("/documentation")
+def documentation():
+    return {
+        'Description':
+            '\nThis API is part of world famous Project Liminal.\n'
+            'It generates artificial satellite images from coastlines by calling\n'
+            'different diffusion models. Use endpoint /generate to generate images.\n'
+            'The parameters this endpoint takes are described underneath.',
+        'Endpoints' : {
+            '/generate': {
+                'parameters': {
+                    'diffusion_steps':'any integer between 1 and 100',
+                    'resolution':['256','512'],
+                    'biome':['white', 'yellow', 'green', 'mix']
+                    },
+                'response':'Response(im_bytes, headers=headers, media_type="image/png")'
+                },
+            '/documentation':'Documentaion of this API'
+            }
     }
