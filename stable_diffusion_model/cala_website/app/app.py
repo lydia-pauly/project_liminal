@@ -26,7 +26,8 @@ def grab_text_lists(chat_api=False, own_api=False) :
     "🦌 Reprogramming local fauna...",
     "🧙 Rereading Lord of the Rings...",
     "🐔 Chickens coming home to roost...",
-    "🌊 Coalescing coastlines..."
+    "🌊 Coalescing coastlines...",
+    "🏄 Coastifying my life..."
                 ]
 
     icy_name_list = [
@@ -296,8 +297,8 @@ with open(css_path) as css :
             continent, and then by biome. We also experimented with boosted image sets by rotating each \
             image by 90 degrees to produce 3 'new' images, which gave us a dataset of around 3k images.")
         st.markdown("The original images come from the SENTINEL-2 satellite, and were sourced by Frederik \
-                    Ueberschar for his final thesis project, LANDSHAPES. You can read more about his work here \
-                        and find his dataset on Kaggle here, including his enhanced 51k image dataset which \
+                    Ueberschar for his final thesis project, LANDSHAPES. You can read more about his work [here](https://landshapes.earth/) \
+                        and find his dataset on Kaggle [here](https://www.kaggle.com/datasets/ueberf/sentinel-51k-truecolor), including his enhanced 51k image dataset which \
                             he very kindly provided to us for this project. Thanks Frederik!")
         st.markdown('')
         st.markdown('')
@@ -326,9 +327,11 @@ with open(css_path) as css :
                     if use_deployment == False : im = variable_dictionary['im_list_fixed'][0]
                     else : im = im_list_fixed[0]
                 else :
-                    params['resolution'] = 512
-                    res = requests.get(url=model_api, params=params)
-                    im = Image.open(io.BytesIO(res.content))
+                    spinner_picker = rand.randint(0,len(spinner_text)-1)
+                    with st.spinner(text=spinner_text[spinner_picker]) :
+                        params['resolution'] = 512
+                        res = requests.get(url=model_api, params=params)
+                        im = Image.open(io.BytesIO(res.content))
                 with c4_1 :
                     c4_1.image(im)
                 with c4_2 :
