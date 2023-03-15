@@ -6,8 +6,6 @@ import io
 from PIL import Image
 import time
 
-model_api = "https://api-second-version-hoqbdqxmgq-ew.a.run.app/generate"
-
 def grab_text_lists(chat_api=False, own_api=False) :
     spinner_text = [
     "🏔️ Moving mountains...",
@@ -40,7 +38,25 @@ def grab_text_lists(chat_api=False, own_api=False) :
         "Frostfell",
         "Crystaline",
         "Icemarch",
-        "Glaciera"
+        "Hailstrike",
+        "Rimecrest",
+        "Frostwynd",
+        "Icefall Reach",
+        "Winterwane",
+        "Snowdrift Plains",
+        "Frostgale Tundra",
+        "Glacierheart",
+        "Frostbite Peaks",
+        "Wintercrowd",
+        "Nivalia",
+        "Vinterland",
+        "Frostlandia",
+        "Arktikos",
+        "Morozia",
+        "Kylmamaa",
+        "Sneizny",
+        "Iskandar",
+        "Aisukurimu"
     ]
 
     earthy_name_list = [
@@ -53,7 +69,26 @@ def grab_text_lists(chat_api=False, own_api=False) :
         "Skymountain",
         "Cragspire",
         "Alpinea",
-        "Ridgehaven"
+        "Ridgehaven",
+        "Altanica",
+        "Cordilleria",
+        "Montania",
+        "Pinnaclea",
+        "Summitia",
+        "Alpina",
+        "Andica",
+        "Himalya",
+        "Ridgetop",
+        "Plateaumont",
+        "Monteverde",
+        "Alpindor",
+        "Carpathia",
+        "Taishan",
+        "Tartraia",
+        "Atlasia",
+        "Sierra Alta",
+        "Munrovian",
+        "Pyreneia"
     ]
 
     greeny_name_list = [
@@ -66,7 +101,25 @@ def grab_text_lists(chat_api=False, own_api=False) :
         "Junglehaven",
         "Rainforestia",
         "Oasisia",
-        "Wilderwood"
+        "Wilderwood",
+        "Botanica",
+        "Sylvanara",
+        "Floriana",
+        "Arborea",
+        "Folia",
+        "Aurorae",
+        "Luminara",
+        "Halcyonia",
+        "Bosquia",
+        "Florensia",
+        "Zelenaya",
+        "Grunland",
+        "Emeraldis",
+        "Bucolicia",
+        "Prasinia",
+        "Herbaria",
+        "Jardinia",
+        "Shokubutsu"
     ]
 
     combiney_name_list = [
@@ -79,7 +132,24 @@ def grab_text_lists(chat_api=False, own_api=False) :
         "Ecocentrix",
         "Biodiversea",
         "Climatesphere",
-        "Geozone"
+        "Geozone",
+        "Polyzone",
+        "Climatia",
+        "Variaterra",
+        "Diversea",
+        "Multiclima",
+        "Omnithera",
+        "Heteroterra",
+        "Pluriclima",
+        "Isthmica",
+        "Trivenia",
+        "Tundralia",
+        "Mediterreia",
+        "Sahyadria",
+        "Zephyria",
+        "Borealasia",
+        "Equatoria",
+        "Continentalis"
     ]
 
     name_dictionary = { 'green' : greeny_name_list,
@@ -159,6 +229,18 @@ with open(css_path) as css :
             c1_b.write(' ')
             c1_b.write(' ')
             c1_b.markdown('#### Choose an option below for some fictional coastlines with flavour text 📜')
+            c1_b.write(' ')
+            diffusion_steps = st.slider(label="Diffusion steps", min_value=5, max_value=70, step=1)
+
+            c1_b_1, c1_b_2, c1_b_3 = c1_b.columns(3, gap='large')
+            c1_b_1.markdown("   🌈 **Less steps**")
+            c1_b_1.write('Quicker, but more dreamy!')
+            c1_b_3.markdown("📸 **More steps**")
+            c1_b_3.write("Slower but more detail!")
+
+            params['diffusion_steps'] = diffusion_steps
+
+            st.write(' ')
             c1_b_col1, c1_b_col2, c1_b_col3, c1_b_col4 = c1_b.columns(4)
             with c1_b_col1 :
                 generate_white = c1_b_col1.button(label="❄️ Give me icy coastlines!")
@@ -297,8 +379,8 @@ with open(css_path) as css :
             removed all the non-coastal areas. These images were then broken into classifications by \
             continent, and then by biome. We also experimented with boosted image sets by rotating each \
             image by 90 degrees to produce 3 'new' images, which gave us a dataset of around 3k images.")
-        st.markdown("The original images come from the SENTINEL-2 satellite, and were sourced by Frederik \
-                    Ueberschar for his final thesis project, LANDSHAPES. You can read more about his work [here](https://landshapes.earth/) \
+        st.markdown("The original images come from the SENTINEL-2 satellite, and were sourced by Frederik Ueberschär \
+                    for his final thesis project, LANDSHAPES. You can read more about his work [here](https://landshapes.earth/) \
                         and find his dataset on Kaggle [here](https://www.kaggle.com/datasets/ueberf/sentinel-51k-truecolor), including his enhanced 51k image dataset which \
                             he very kindly provided to us for this project. Thanks Frederik!")
         st.markdown('')

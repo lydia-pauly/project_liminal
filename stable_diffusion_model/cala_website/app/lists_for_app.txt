@@ -28,7 +28,25 @@ icy_name_list = [
     "Frostfell",
     "Crystaline",
     "Icemarch",
-    "Glaciera"
+    "Hailstrike",
+    "Rimecrest",
+    "Frostwynd",
+    "Icefall Reach",
+    "Winterwane",
+    "Snowdrift Plains",
+    "Frostgale Tundra",
+    "Glacierheart",
+    "Frostbite Peaks",
+    "Wintercrowd",
+    "Nivalia",
+    "Vinterland",
+    "Frostlandia",
+    "Arktikos",
+    "Morozia",
+    "Kylmamaa",
+    "Sneizny",
+    "Iskandar",
+    "Aisukurimu"
 ]
 
 earthy_name_list = [
@@ -41,7 +59,26 @@ earthy_name_list = [
     "Skymountain",
     "Cragspire",
     "Alpinea",
-    "Ridgehaven"
+    "Ridgehaven",
+    "Altanica",
+    "Cordilleria",
+    "Montania",
+    "Pinnaclea",
+    "Summitia",
+    "Alpina",
+    "Andica",
+    "Himalya",
+    "Ridgetop",
+    "Plateaumont",
+    "Monteverde",
+    "Alpindor",
+    "Carpathia",
+    "Taishan",
+    "Tartraia",
+    "Atlasia",
+    "Sierra Alta",
+    "Munrovian",
+    "Pyreneia"
 ]
 
 greeny_name_list = [
@@ -54,7 +91,25 @@ greeny_name_list = [
     "Junglehaven",
     "Rainforestia",
     "Oasisia",
-    "Wilderwood"
+    "Wilderwood",
+    "Botanica",
+    "Sylvanara",
+    "Floriana",
+    "Arborea",
+    "Folia",
+    "Aurorae",
+    "Luminara",
+    "Halcyonia",
+    "Bosquia",
+    "Florensia",
+    "Zelenaya",
+    "Grunland",
+    "Emeraldis",
+    "Bucolicia",
+    "Prasinia",
+    "Herbaria",
+    "Jardinia",
+    "Shokubutsu"
 ]
 
 combiney_name_list = [
@@ -67,9 +122,25 @@ combiney_name_list = [
     "Ecocentrix",
     "Biodiversea",
     "Climatesphere",
-    "Geozone"
+    "Geozone",
+    "Polyzone",
+    "Climatia",
+    "Variaterra",
+    "Diversea",
+    "Multiclima",
+    "Omnithera",
+    "Heteroterra",
+    "Pluriclima",
+    "Isthmica",
+    "Trivenia",
+    "Tundralia",
+    "Mediterreia",
+    "Sahyadria",
+    "Zephyria",
+    "Borealasia",
+    "Equatoria",
+    "Continentalis"
 ]
-
 name_dictionary = { 'green' : greeny_name_list,
                    'white' : icy_name_list,
                    'yellow' : earthy_name_list,
