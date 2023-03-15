@@ -1,7 +1,2 @@
 streamlit
-numpy
-pandas
-requests
 openai
-io
-PIL
