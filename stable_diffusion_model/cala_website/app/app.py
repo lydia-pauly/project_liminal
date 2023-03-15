@@ -109,8 +109,8 @@ def integrate_name_lore_list(name) :
                 f"{name} was a mythical icy continent located on the outskirts of the known world. It was said to be inhabited by its own species of bipedal snow-gazelles and was the birthplace of Yendyl the Brave, a legendary hero who could slide over water on a single maple leaf."]
     return lore_list_fixed
 
-use_chat_gpt = False
-use_our_api = False
+use_chat_gpt = True
+use_our_api = True
 use_deployment = True
 
 params = { 'biome' : 'white',
