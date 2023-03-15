@@ -134,6 +134,7 @@ if use_deployment == True :
     im_list_fixed = st.secrets['fixed_lists']['im_list_fixed']
     lore_list_fixed = st.secrets['fixed_lists']['lore_list_fixed']
     oa.api_key = st.secrets['openai']['open_ai_key']
+    model_api = st.secrets['ownapi']['our_api_url']
 
     name_dictionary = { 'green' : greeny_name_list,
                     'white' : icy_name_list,
