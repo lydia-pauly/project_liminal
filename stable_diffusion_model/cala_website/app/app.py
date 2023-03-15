@@ -379,7 +379,7 @@ with open(css_path) as css :
             removed all the non-coastal areas. These images were then broken into classifications by \
             continent, and then by biome. We also experimented with boosted image sets by rotating each \
             image by 90 degrees to produce 3 'new' images, which gave us a dataset of around 3k images.")
-        st.markdown("The original images come from the SENTINEL-2 satellite, and were sourced by Frederik \
+        st.markdown("The original images come from the SENTINEL-2 satellite, and were sourced by Frederik Ueberschär \
                     Ueberschar for his final thesis project, LANDSHAPES. You can read more about his work [here](https://landshapes.earth/) \
                         and find his dataset on Kaggle [here](https://www.kaggle.com/datasets/ueberf/sentinel-51k-truecolor), including his enhanced 51k image dataset which \
                             he very kindly provided to us for this project. Thanks Frederik!")
