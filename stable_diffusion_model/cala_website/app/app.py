@@ -220,10 +220,9 @@ with open(css_path) as css :
 
     with c1 :
         with c1_a :
-            c1_a.markdown('# Welcome to **COASTr**')
-            c1_a.markdown('##### (Coastal Object-based Algorithm and Stochastic Transformation with Rotation)')
-            c1_a.markdown('COASTr is a diffusion model trained on SENTINEL-2 satellite images, and can produce completely new, fictional coastlines - never seen before by human eyes. 🏖️💭')
-            #c1_a.markdown('COASTr was built in just two weeks by the Project Liminal team at Le Wagon for their final project.')
+            c1_a.markdown('# Welcome to **CALA**')
+            c1_a.markdown('##### (Coastal and Artificial Landscape Architect)')
+            c1_a.markdown('CALA is a diffusion model trained on SENTINEL-2 satellite images, and can produce completely new, fictional coastlines - never seen before by human eyes. 🏖️💭')
         with c1_b :
             c1_b.write(' ')
             c1_b.write(' ')
@@ -371,32 +370,78 @@ with open(css_path) as css :
             we give it an image of **pure noise**, and ask the model to predict \
             what the original image was.")
         st.markdown("Here's a video of our model moving from pure noise to a predicted coastline:")
-        st.video('https://i.imgur.com/kUO8OrF.mp4')
+        st.video('https://i.imgur.com/CWVforT.mp4')
         st.markdown('')
         st.markdown('')
-        st.markdown('#### 📸 Q2: How many images is COASTr trained on, and where did they come from?')
-        st.markdown("COASTr's original dataset was 4000 images, then cleaned down to 1302 once we \
+        st.markdown('#### 📸 Q2: How many images is CALA trained on, and where did they come from?')
+        st.markdown("CALA's original dataset was 4000 images, then cleaned down to 1302 once we \
             removed all the non-coastal areas. These images were then broken into classifications by \
             continent, and then by biome. We also experimented with boosted image sets by rotating each \
             image by 90 degrees to produce 3 'new' images, which gave us a dataset of around 3k images.")
+        st.markdown("Here's an example of the satellite images that we were using, at their full, original resolution \
+            of 1024 by 1024px:")
+        st.image('https://i.imgur.com/OgqOrii.jpg', width=400, use_column_width=True, caption="A coastline.. somewhere. 🏖️")
         st.markdown("The original images come from the SENTINEL-2 satellite, and were sourced by Frederik Ueberschär \
                     for his final thesis project, LANDSHAPES. You can read more about his work [here](https://landshapes.earth/) \
                         and find his dataset on Kaggle [here](https://www.kaggle.com/datasets/ueberf/sentinel-51k-truecolor), including his enhanced 51k image dataset which \
                             he very kindly provided to us for this project. Thanks Frederik!")
         st.markdown('')
         st.markdown('')
-        st.markdown("#### 👀 Q3: And who is this super genius team that made COASTr?")
-        st.markdown("We are Project Liminal at Le Wagon! We made COASTr in 2 weeks for our final project. \
+        st.markdown("#### 🔍 Q3: How realistic are the generated pictures?")
+        st.markdown("We don't have a quantitative measure of realism, but you can check for yourself! Below is a \
+            a selection of real coastlines vs generated coastlines, both resized to 256 by 256px.")
+        st.markdown('')
+        st.markdown('')
+        c6_1_header, c6_2_header = st.columns(2)
+        c6_1a, c6_2a, c6_3a, c6_4a = st.columns(4)
+        c6_1b, c6_2b, c6_3b, c6_4b = st.columns(4)
+        c6_1c, c6_2c, c6_3c, c6_4c = st.columns(4)
+        c6_1_header.markdown("##### Real coastlines 📸")
+        c6_2_header.markdown("##### Generated coastlines 👨‍🎨️")
+        st.markdown('')
+        #Real
+        c6_1a.image("https://i.imgur.com/EkeplDG.png")
+        c6_2a.image("https://i.imgur.com/UtE3Dlm.png")
+        #Fake
+        c6_3a.image("https://i.imgur.com/znRS1Om.png")
+        c6_4a.image("https://i.imgur.com/AOFY60d.png")
+        #Real
+        c6_1b.image("https://i.imgur.com/WWtIKI7.png")
+        c6_2b.image("https://i.imgur.com/m0zaFKt.png")
+        #Fake
+        c6_3b.image("https://i.imgur.com/ci9Lnze.png")
+        c6_4b.image("https://i.imgur.com/ucEoXNe.png")
+        #Real
+        c6_1c.image("https://i.imgur.com/TIGgUHl.png")
+        c6_2c.image("https://i.imgur.com/aELlXlD.png")
+        #Fake
+        c6_3c.image("https://i.imgur.com/N1r8i9s.png")
+        c6_4c.image("https://i.imgur.com/J0wrzgA.png")
+        st.markdown('')
+        st.markdown('')
+        st.markdown('#### ⚙️ Q4: What is the technical architecture behind CALA?')
+        st.markdown('CALA is a frontend website that uses a parametric API to request coastlines from the trained model! You \
+            can find a diagram of how this works below:')
+        st.image('https://i.imgur.com/8ERP7hd.png')
+        st.markdown('')
+        st.markdown('')
+        st.markdown('#### ⚙️ Q5: How does the model know what a coastline is?')
+        st.markdown("That's a good question - it was pretty hard even for humans to decide what was a coastline and what wasn't!")
+        st.markdown("Below are some examples of 'easy' coastlines on the left and 'difficult' coastlines on the right.")
+        st.image('https://i.imgur.com/KuFH3sL.jpg')
+        st.markdown('')
+        st.markdown('')
+        st.markdown("#### 👀 Q6: And who is this super genius team that made CALA?")
+        st.markdown("We are Project Liminal at Le Wagon! We made CALA in 2 weeks for our final project. \
             Here's a child's drawing of us together in our final week.")
         st.image('https://i.imgur.com/1CkuNLJ.png')
-
     c3 = st.container()
     with c3 :
         c3.markdown("### 🚨 Secret coastlines! Now available! Press below! 🚨")
         c3_col1, c3_col2, = c3.columns(2)
         c3.markdown(' ')
         with c3_col1 :
-            generate_highres = c3_col1.button(label="⏫ Give me a high-def coastline!")
+            generate_highres = c3_col1.button(label="🪩 Give me a funky coastline!")
         with c3_col2 :
             generate_surprise = c3_col2.button(label="🎁 Surprise me!")
 
