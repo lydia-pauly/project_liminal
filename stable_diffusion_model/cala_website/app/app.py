@@ -182,7 +182,7 @@ def integrate_name_lore_list(name) :
 
 use_chat_gpt = True
 use_our_api = True
-use_deployment = False
+use_deployment = True
 
 params = { 'biome' : 'white',
           'diffusion_steps' : 30,
