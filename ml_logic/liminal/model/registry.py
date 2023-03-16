@@ -33,7 +33,7 @@ def load_model(biome, resolution) -> keras.Model:
     print('Loading weights...')
     if resolution == 256:
         if biome == 'white':
-            model_test_path = 'liminal/weights/white/model_white_v2_485'
+            model_test_path = 'liminal/weights/white/model_white_199'
             model.load_weights(model_test_path)
             model.normalizer.mean = constant([[0.51863194, 0.53141606, 0.5295387]])
             model.normalizer.variance = constant([[0.17620476, 0.16547853, 0.15832365]])
