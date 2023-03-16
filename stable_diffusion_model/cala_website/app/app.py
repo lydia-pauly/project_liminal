@@ -220,9 +220,9 @@ with open(css_path) as css :
 
     with c1 :
         with c1_a :
-            c1_a.markdown('# Welcome to **COASTr**')
-            c1_a.markdown('##### (Coastal Object-based Algorithm and Stochastic Transformation with Rotation)')
-            c1_a.markdown('COASTr is a diffusion model trained on SENTINEL-2 satellite images, and can produce completely new, fictional coastlines - never seen before by human eyes. 🏖️💭')
+            c1_a.markdown('# Welcome to **CALA**')
+            c1_a.markdown('##### (Coastal Artificial Landscape Architect)')
+            c1_a.markdown('CALA is a diffusion model trained on SENTINEL-2 satellite images, and can produce completely new, fictional coastlines - never seen before by human eyes. 🏖️💭')
             #c1_a.markdown('COASTr was built in just two weeks by the Project Liminal team at Le Wagon for their final project.')
         with c1_b :
             c1_b.write(' ')
@@ -371,7 +371,7 @@ with open(css_path) as css :
             we give it an image of **pure noise**, and ask the model to predict \
             what the original image was.")
         st.markdown("Here's a video of our model moving from pure noise to a predicted coastline:")
-        st.video('https://i.imgur.com/kUO8OrF.mp4')
+        st.video('https://i.imgur.com/CWVforT.mp4')
         st.markdown('')
         st.markdown('')
         st.markdown('#### 📸 Q2: How many images is COASTr trained on, and where did they come from?')
@@ -379,10 +379,19 @@ with open(css_path) as css :
             removed all the non-coastal areas. These images were then broken into classifications by \
             continent, and then by biome. We also experimented with boosted image sets by rotating each \
             image by 90 degrees to produce 3 'new' images, which gave us a dataset of around 3k images.")
+        st.markdown("Here's an example of the satellite images that we were using, at their full, original resolution \
+            of 1024 by 1024px:")
+        st.image('https://i.imgur.com/OgqOrii.jpg', width=400, use_column_width=True, caption="A coastline.. somewhere. 🏖️")
         st.markdown("The original images come from the SENTINEL-2 satellite, and were sourced by Frederik Ueberschär \
                     for his final thesis project, LANDSHAPES. You can read more about his work [here](https://landshapes.earth/) \
                         and find his dataset on Kaggle [here](https://www.kaggle.com/datasets/ueberf/sentinel-51k-truecolor), including his enhanced 51k image dataset which \
                             he very kindly provided to us for this project. Thanks Frederik!")
+        st.markdown('')
+        st.markdown('')
+        st.markdown('#### ⚙️ Q3: What is the technical architecture behind CALA?')
+        st.markdown('CALA is a frontend website that uses a parametric API to request coastlines from the trained model! You \
+            can find a diagram of how this works below:')
+        st.image('https://i.imgur.com/pmvuBjR.png')
         st.markdown('')
         st.markdown('')
         st.markdown("#### 👀 Q3: And who is this super genius team that made COASTr?")
