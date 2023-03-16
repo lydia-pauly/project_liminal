@@ -182,7 +182,7 @@ def integrate_name_lore_list(name) :
 
 use_chat_gpt = True
 use_our_api = True
-use_deployment = True
+use_deployment = False
 
 params = { 'biome' : 'white',
           'diffusion_steps' : 30,
@@ -387,13 +387,7 @@ with open(css_path) as css :
                             he very kindly provided to us for this project. Thanks Frederik!")
         st.markdown('')
         st.markdown('')
-        st.markdown('#### ⚙️ Q3: What is the technical architecture behind CALA?')
-        st.markdown('CALA is a frontend website that uses a parametric API to request coastlines from the trained model! You \
-            can find a diagram of how this works below:')
-        st.image('https://i.imgur.com/8ERP7hd.png')
-        st.markdown('')
-        st.markdown('')
-        st.markdown("#### 🔍 Q4: How realistic are the model pictures?")
+        st.markdown("#### 🔍 Q3: How realistic are the generated pictures?")
         st.markdown("We don't have a quantitative measure of realism, but you can check for yourself! Below is a \
             a selection of real coastlines vs generated coastlines, both resized to 256 by 256px.")
         st.markdown('')
@@ -423,6 +417,12 @@ with open(css_path) as css :
         #Fake
         c6_3c.image("https://i.imgur.com/N1r8i9s.png")
         c6_4c.image("https://i.imgur.com/J0wrzgA.png")
+        st.markdown('')
+        st.markdown('')
+        st.markdown('#### ⚙️ Q4: What is the technical architecture behind CALA?')
+        st.markdown('CALA is a frontend website that uses a parametric API to request coastlines from the trained model! You \
+            can find a diagram of how this works below:')
+        st.image('https://i.imgur.com/8ERP7hd.png')
         st.markdown('')
         st.markdown('')
         st.markdown("#### 👀 Q5: And who is this super genius team that made CALA?")
