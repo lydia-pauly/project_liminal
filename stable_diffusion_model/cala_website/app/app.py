@@ -182,7 +182,7 @@ def integrate_name_lore_list(name) :
 
 use_chat_gpt = True
 use_our_api = True
-use_deployment = True
+use_deployment = False
 
 params = { 'biome' : 'white',
           'diffusion_steps' : 30,
@@ -390,14 +390,45 @@ with open(css_path) as css :
         st.markdown('#### ⚙️ Q3: What is the technical architecture behind CALA?')
         st.markdown('CALA is a frontend website that uses a parametric API to request coastlines from the trained model! You \
             can find a diagram of how this works below:')
-        st.image('https://i.imgur.com/pmvuBjR.png')
+        st.image('https://i.imgur.com/8ERP7hd.png')
         st.markdown('')
         st.markdown('')
-        st.markdown("#### 👀 Q3: And who is this super genius team that made CALA?")
+        st.markdown("#### 🔍 Q4: How realistic are the model pictures?")
+        st.markdown("We don't have a quantitative measure of realism, but you can check for yourself! Below is a \
+            a selection of real coastlines vs generated coastlines, both resized to 256 by 256px.")
+        st.markdown('')
+        st.markdown('')
+        c6_1_header, c6_2_header = st.columns(2)
+        c6_1a, c6_2a, c6_3a, c6_4a = st.columns(4)
+        c6_1b, c6_2b, c6_3b, c6_4b = st.columns(4)
+        c6_1c, c6_2c, c6_3c, c6_4c = st.columns(4)
+        c6_1_header.markdown("##### Real coastlines 📸")
+        c6_2_header.markdown("##### Generated coastlines 👨‍🎨️")
+        st.markdown('')
+        #Real
+        c6_1a.image("https://i.imgur.com/EkeplDG.png")
+        c6_2a.image("https://i.imgur.com/UtE3Dlm.png")
+        #Fake
+        c6_3a.image("https://i.imgur.com/znRS1Om.png")
+        c6_4a.image("https://i.imgur.com/AOFY60d.png")
+        #Real
+        c6_1b.image("https://i.imgur.com/WWtIKI7.png")
+        c6_2b.image("https://i.imgur.com/m0zaFKt.png")
+        #Fake
+        c6_3b.image("https://i.imgur.com/ci9Lnze.png")
+        c6_4b.image("https://i.imgur.com/ucEoXNe.png")
+        #Real
+        c6_1c.image("https://i.imgur.com/TIGgUHl.png")
+        c6_2c.image("https://i.imgur.com/aELlXlD.png")
+        #Fake
+        c6_3c.image("https://i.imgur.com/N1r8i9s.png")
+        c6_4c.image("https://i.imgur.com/J0wrzgA.png")
+        st.markdown('')
+        st.markdown('')
+        st.markdown("#### 👀 Q5: And who is this super genius team that made CALA?")
         st.markdown("We are Project Liminal at Le Wagon! We made CALA in 2 weeks for our final project. \
             Here's a child's drawing of us together in our final week.")
         st.image('https://i.imgur.com/1CkuNLJ.png')
-
     c3 = st.container()
     with c3 :
         c3.markdown("### 🚨 Secret coastlines! Now available! Press below! 🚨")
