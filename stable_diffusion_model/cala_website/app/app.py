@@ -441,7 +441,7 @@ with open(css_path) as css :
         c3_col1, c3_col2, = c3.columns(2)
         c3.markdown(' ')
         with c3_col1 :
-            generate_highres = c3_col1.button(label="⏫ Give me a high-def coastline!")
+            generate_highres = c3_col1.button(label="🪩 Give me a funky coastline!")
         with c3_col2 :
             generate_surprise = c3_col2.button(label="🎁 Surprise me!")
 
