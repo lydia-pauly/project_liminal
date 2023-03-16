@@ -223,7 +223,6 @@ with open(css_path) as css :
             c1_a.markdown('# Welcome to **CALA**')
             c1_a.markdown('##### (Coastal and Artificial Landscape Architect)')
             c1_a.markdown('CALA is a diffusion model trained on SENTINEL-2 satellite images, and can produce completely new, fictional coastlines - never seen before by human eyes. 🏖️💭')
-            #c1_a.markdown('COASTr was built in just two weeks by the Project Liminal team at Le Wagon for their final project.')
         with c1_b :
             c1_b.write(' ')
             c1_b.write(' ')
@@ -374,8 +373,8 @@ with open(css_path) as css :
         st.video('https://i.imgur.com/CWVforT.mp4')
         st.markdown('')
         st.markdown('')
-        st.markdown('#### 📸 Q2: How many images is COASTr trained on, and where did they come from?')
-        st.markdown("COASTr's original dataset was 4000 images, then cleaned down to 1302 once we \
+        st.markdown('#### 📸 Q2: How many images is CALA trained on, and where did they come from?')
+        st.markdown("CALA's original dataset was 4000 images, then cleaned down to 1302 once we \
             removed all the non-coastal areas. These images were then broken into classifications by \
             continent, and then by biome. We also experimented with boosted image sets by rotating each \
             image by 90 degrees to produce 3 'new' images, which gave us a dataset of around 3k images.")
@@ -394,8 +393,8 @@ with open(css_path) as css :
         st.image('https://i.imgur.com/pmvuBjR.png')
         st.markdown('')
         st.markdown('')
-        st.markdown("#### 👀 Q3: And who is this super genius team that made COASTr?")
-        st.markdown("We are Project Liminal at Le Wagon! We made COASTr in 2 weeks for our final project. \
+        st.markdown("#### 👀 Q3: And who is this super genius team that made CALA?")
+        st.markdown("We are Project Liminal at Le Wagon! We made CALA in 2 weeks for our final project. \
             Here's a child's drawing of us together in our final week.")
         st.image('https://i.imgur.com/1CkuNLJ.png')
 
