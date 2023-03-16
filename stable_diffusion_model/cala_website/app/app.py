@@ -221,7 +221,7 @@ with open(css_path) as css :
     with c1 :
         with c1_a :
             c1_a.markdown('# Welcome to **CALA**')
-            c1_a.markdown('##### (Coastal Artificial Landscape Architect)')
+            c1_a.markdown('##### (Coastal and Artificial Landscape Architect)')
             c1_a.markdown('CALA is a diffusion model trained on SENTINEL-2 satellite images, and can produce completely new, fictional coastlines - never seen before by human eyes. 🏖️💭')
             #c1_a.markdown('COASTr was built in just two weeks by the Project Liminal team at Le Wagon for their final project.')
         with c1_b :
