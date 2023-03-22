@@ -1,5 +1,10 @@
-ml_logic/liminal/weights/
+distribution/liminal/weights/512
+distribution/liminal/weights/green
+distribution/liminal/weights/white
+distribution/liminal/weights/mix
+distribution/liminal/weights/yellow
 raw_data/
+*:Zone.Identifier
 
 # Editors
 .vscode/
